@@ -1,4 +1,5 @@
 import random
+from messages import wrong_operator_messages
 
 def add(n1, n2):
     return n1 + n2
@@ -21,7 +22,7 @@ def modulo(n1, n2):
 
 repeat = True
 print("Welcome to my Calculator")
-wrong_operator_messages = ["You picked the wrong operator, fool (+, -, *, :, /, %)", "All you had to do is pick the right operator, CJ"]
+
 while repeat:
     number1 = float(input("Enter your first number: "))
     operator = input("Pick your operator: ")
