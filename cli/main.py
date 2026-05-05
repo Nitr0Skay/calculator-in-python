@@ -1,4 +1,5 @@
 from calculator import Calculator as calc
+from helpers import *
 
 def main():
     repeat = True
