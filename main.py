@@ -21,11 +21,12 @@ def modulo(n1, n2):
 
 repeat = True
 print("Welcome to my Calculator")
-
+step = 0
 while repeat:
-    number1 = float(input("Enter your first number: "))
-    operator = input("Pick your operator: ")
-    number2 = float(input("Enter your second Number: "))
+    step += 1
+    number = get_number("Enter number: ")
+    operator = get_operator("Pick your operator: ")
+
     result = None
 
     match operator:
