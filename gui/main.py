@@ -13,23 +13,40 @@ def main():
     number = 1
     for i in range(1,4):
         for j in range(1,4):
-            create_button(root, number, i, j)
+            create_button(root, entry, number, i, j)
             number += 1
 
-    create_button(root, "0", 4, 2)
-    create_button(root, "C", 4, 1)
-    create_button(root, "=", 4, 3)
+    create_button(root, entry, "0", 4, 2)
+    create_button(root, entry, "C", 4, 1)
+    create_button(root, entry, "=", 4, 3)
 
-    create_button(root, "+", 1, 0)
-    create_button(root, "-", 2, 0)
-    create_button(root, "*", 3, 0)
-    create_button(root, "/", 4, 0)
+    create_button(root, entry, "+", 1, 0)
+    create_button(root, entry, "-", 2, 0)
+    create_button(root, entry, "*", 3, 0)
+    create_button(root, entry, "/", 4, 0)
 
     root.mainloop()
 
-def create_button(root, content, row, column):
-    button = tk.Button(root, text=content, font=('Arial', 15))
+def create_button(root, entry, content, row, column):
+    if content == "=":
+        calculation = entry.get()
+        button = tk.Button(root, text=content, font=('Arial', 15), command=lambda: calculate(entry))
+    else:
+        button = tk.Button(root, text=content, font=('Arial', 15), command=lambda: update_entry(entry, content))
+
     button.grid(row=row, column=column, ipadx=10, ipady=10, pady=10)
+
+def update_entry(entry, content):
+    entry.insert(tk.END, content)
+
+def calculate(entry):
+    try:
+        result = eval(entry.get())
+        entry.delete(0, tk.END)
+        entry.insert(tk.END, str(result))
+    except Exception as e:
+        entry.delete(0, tk.END)
+        entry.insert(tk.END, str(e))
 
 if __name__ == "__main__":
     main()
