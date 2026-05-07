@@ -42,6 +42,7 @@ def main():
 
         else:
             print("Thank you and have a nice day :)")
+            calc.save_history()
             repeat = False
 
 if __name__ == "__main__":

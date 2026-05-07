@@ -56,7 +56,12 @@ def save_operation(operation, file_name, file_extension):
                 "result": result
             })
 
-def write_to_file(math_operation):
+def write_to_file(math_operations):
+    if isinstance(math_operations, str):
+        math_operations = [math_operations]
+
     file_extension = get_file_extension("Pick your file extension (.txt or .csv): ")
     file_name = get_file_name("You can type here the file name where you want to store this result or left it blank for default file name: ")
-    save_operation(math_operation, file_name, file_extension)
+
+    for operation in math_operations:
+        save_operation(operation, file_name, file_extension)

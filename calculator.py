@@ -1,3 +1,5 @@
+from helpers import *
+
 class Calculator:
 
     def __init__(self):
@@ -25,3 +27,6 @@ class Calculator:
 
     def add_to_history(self, operation):
         self.history.append(operation)
+
+    def save_history(self):
+        write_to_file(self.history)
