@@ -30,7 +30,12 @@ def main():
             number = Decimal(str(get_number("Enter next number: ")))
 
         old_result = result
-        result = operation[op](result, number)
+
+        try:
+            result = operation[op](result, number)
+        except ZeroDivisionError:
+            print("You can't divide by Zero")
+            continue
 
         math_operation = f"{old_result} {op} {number} = {result}"
         calc.add_to_history(math_operation)
