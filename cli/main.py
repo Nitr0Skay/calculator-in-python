@@ -27,9 +27,7 @@ def main():
         math_operation = f"{old_result} {op} {number} = {result}"
         calc.history.append(math_operation)
 
-        print(result)
         print(math_operation)
-        print(calc.history)
 
         shall_we_continue = input("Shall we continue? (y/n): ")
         if shall_we_continue.strip().lower() in ("y", "ye", "yes"):
