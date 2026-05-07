@@ -1,4 +1,3 @@
-from calculator import Calculator
 import tkinter as tk
 
 def main():
@@ -8,7 +7,6 @@ def main():
 
     entry = tk.Entry(root, width=20, font=('Arial', 24), justify="right")
     entry.grid(row=0, column=0, columnspan=4, padx=5, pady=25, sticky="ew")
-
 
     number = 1
     for i in range(1,4):
@@ -29,8 +27,11 @@ def main():
 
 def create_button(root, entry, content, row, column):
     if content == "=":
-        calculation = entry.get()
         button = tk.Button(root, text=content, font=('Arial', 15), command=lambda: calculate(entry))
+
+    elif content == "C":
+        button = tk.Button(root, text=content, font=('Arial', 15), command=lambda: clear_entry(entry))
+
     else:
         button = tk.Button(root, text=content, font=('Arial', 15), command=lambda: update_entry(entry, content))
 
@@ -47,6 +48,10 @@ def calculate(entry):
     except Exception as e:
         entry.delete(0, tk.END)
         entry.insert(tk.END, str(e))
+
+def clear_entry(entry):
+    entry.delete(0, tk.END)
+    entry.insert(tk.END, "")
 
 if __name__ == "__main__":
     main()
