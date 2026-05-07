@@ -6,21 +6,40 @@ def main():
     calc = Calculator()
     repeat = True
     print("Welcome to my Calculator")
+    math_operation = ""
     step = 0
+    result = 0
+
     while repeat:
         step += 1
-        number = get_number("Enter number: ")
-        op = get_operator("Pick your operator: ")
-        result = None
 
-        if(result is not None):
-            print(f"Your result is {result}")
+        if step == 1:
+            result = get_number("Enter your number: ")
+            op = get_operator("Pick your operator: ")
+            number = get_number("Enter next number: ")
         else:
-            print("Wasted")
+            op = get_operator("Pick your operator: ")
+            number = get_number("Enter next number: ")
+
+        old_result = result
+        result = operation[op](result, number)
+
+        math_operation = f"{old_result} {op} {number} = {result}"
+        calc.history.append(math_operation)
+
+        print(result)
+        print(math_operation)
+        print(calc.history)
 
         shall_we_continue = input("Shall we continue? (y/n): ")
-        if shall_we_continue.lower() in ("y", "ye", "yes"):
-            print("ok")
+        if shall_we_continue.strip().lower() in ("y", "ye", "yes"):
+            same_result = input("Do you want to continue on your result or start new calculation ? (y/n): ")
+            if same_result.strip().lower() in ("y", "ye", "yes"):
+                print(f"Your last operation was: {math_operation}")
+            else:
+                step = 0
+                result = 0
+
         else:
             print("oh")
             repeat = False
