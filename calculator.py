@@ -21,8 +21,7 @@ class Calculator:
         return n1 % n2
 
     def exp(self, n1, n2):
-        result = 0
-        for _ in range(n2):
-            result *= n1
+        return n1 ** n2
 
-        return result
+    def add_to_history(self, operation):
+        self.history.append(operation)

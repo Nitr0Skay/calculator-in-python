@@ -1,13 +1,11 @@
-from decimal import Decimal
 from calculator import Calculator
 from helpers import *
 from dispatcher import *
 
 def main():
-    calc = Calculator()
     repeat = True
+    calc = Calculator()
     print("Welcome to my Calculator")
-    math_operation = ""
     step = 0
     result = 0
 
@@ -26,7 +24,7 @@ def main():
         result = operation[op](result, number)
 
         math_operation = f"{old_result} {op} {number} = {result}"
-        calc.history.append(math_operation)
+        calc.add_to_history(math_operation)
 
         print(math_operation)
         write = input("Would you like to save that calculation in the file ? (y/n): ")

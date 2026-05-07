@@ -1,10 +1,11 @@
 import csv
+from decimal import Decimal
 
 def get_number(prompt):
     """Accept only numbers entered by the user. If user enter some text, this function will try ask for the number again"""
     while True:
         try:
-            return float(input(prompt))
+            return Decimal(input(prompt))
         except ValueError:
             continue
 

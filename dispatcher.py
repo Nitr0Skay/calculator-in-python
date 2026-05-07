@@ -1,10 +1,11 @@
-import operator
+from calculator import Calculator
+c = Calculator()
 operation = {
-    '+': operator.add,
-    '-': operator.sub,
-    '*': operator.mul,
-    '/': operator.truediv,
-    ':': operator.truediv,
-    '%': operator.mod,
-    '**': operator.pow
+    '+': c.add,
+    '-': c.subtract,
+    '*': c.multiply,
+    '/': c.divide,
+    ':': c.divide,
+    '%': c.modulo,
+    '**': c.exp
 }
