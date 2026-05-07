@@ -29,6 +29,9 @@ def main():
         calc.history.append(math_operation)
 
         print(math_operation)
+        write = input("Would you like to save that calculation in the file ? (y/n): ")
+        if write.strip().lower() in ("y", "ye", "yes"):
+            write_to_file(math_operation)
 
         shall_we_continue = input("Shall we continue? (y/n): ")
         if shall_we_continue.strip().lower() in ("y", "ye", "yes"):
@@ -40,7 +43,7 @@ def main():
                 result = 0
 
         else:
-            print("oh")
+            print("Thank you and have a nice day :)")
             repeat = False
 
 if __name__ == "__main__":
