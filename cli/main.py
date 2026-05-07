@@ -50,8 +50,11 @@ def main():
                 result = 0
 
         else:
+            write = input("Would you like to save history in the file ? (y/n): ")
+            if write.strip().lower() in ("y", "ye", "yes"):
+                write_to_file(calc.history)
+
             print("Thank you and have a nice day :)")
-            calc.save_history()
             repeat = False
 
 if __name__ == "__main__":
