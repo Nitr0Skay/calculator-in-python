@@ -1,7 +1,7 @@
 def get_number(prompt):
     while True:
         try:
-            return int(input(prompt))
+            return float(input(prompt))
         except ValueError:
             continue
 
