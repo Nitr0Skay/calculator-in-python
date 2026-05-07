@@ -18,14 +18,14 @@ def get_operator(prompt):
 
 
 def get_file_extension(prompt):
-    """Accept only the file extension entered by the user (txt or csv"""
+    """Accept only the file extension entered by the user (txt or csv)"""
     while True:
         extension = input(prompt)
         if extension.endswith("txt") or extension.endswith("csv"):
             return extension
 
 def get_file_name(prompt):
-    """Accept the name of the user choice. If user wont enter any text, it will return the default file name"""
+    """Accept the name of the user choice. If user doesn't enter any text, it will return the default file name"""
     file_name = input(prompt)
     if len(file_name.strip()) == 0:
         file_name = "calculations"
@@ -39,6 +39,22 @@ def save_operation(operation, file_name, file_extension):
     if file_extension == "txt":
         with open(full_file_name, "a") as file:
             file.write(f"{operation}\n")
+
+    elif file_extension == "csv":
+        operation, result = operation.split(" = ")
+        n1, op, n2 = operation.split()
+        with open(full_file_name, "a", newline="") as file:
+            writer = csv.DictWriter(file, fieldnames=["number1", "operator", "number2", "result"], delimiter=";")
+
+            if file.tell() == 0:
+                writer.writeheader()
+
+            writer.writerow({
+                "number1": n1,
+                "operator": op,
+                "number2": n2,
+                "result": result
+            })
 
 def write_to_file(math_operation):
     file_extension = get_file_extension("Pick your file extension (.txt or .csv): ")
