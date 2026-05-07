@@ -1,5 +1,5 @@
 from calculator import Calculator
-from helpers import *
+from helpers import get_number, get_operator, write_to_file, is_yes
 
 def main():
     repeat = True
@@ -22,12 +22,12 @@ def main():
         step += 1
 
         if step == 1:
-            result = Decimal(str(get_number("Enter your number: ")))
+            result = get_number("Enter your number: ")
             op = get_operator("Pick your operator: ")
-            number = Decimal(str(get_number("Enter next number: ")))
+            number = get_number("Enter next number: ")
         else:
             op = get_operator("Pick your operator: ")
-            number = Decimal(str(get_number("Enter next number: ")))
+            number = get_number("Enter next number: ")
 
         old_result = result
 
@@ -42,13 +42,13 @@ def main():
 
         print(math_operation)
         write = input("Would you like to save that calculation in the file ? (y/n): ")
-        if write.strip().lower() in ("y", "ye", "yes"):
+        if is_yes(write):
             write_to_file(math_operation)
 
         shall_we_continue = input("Shall we continue? (y/n): ")
-        if shall_we_continue.strip().lower() in ("y", "ye", "yes"):
+        if is_yes(shall_we_continue):
             same_result = input("Do you want to continue on your result or start new calculation ? (y/n): ")
-            if same_result.strip().lower() in ("y", "ye", "yes"):
+            if is_yes(same_result):
                 print(f"Your last operation was: {math_operation}")
             else:
                 step = 0
@@ -56,7 +56,7 @@ def main():
 
         else:
             write = input("Would you like to save history in the file ? (y/n): ")
-            if write.strip().lower() in ("y", "ye", "yes"):
+            if is_yes(write):
                 write_to_file(calc.history)
 
             print("Thank you and have a nice day :)")

@@ -32,7 +32,6 @@ def get_file_name(prompt):
 
     return file_name
 
-
 def save_operation(operation, file_name, file_extension):
     """Save mathematical operation to file with provided name and extension"""
     full_file_name = f"{file_name}.{file_extension}"
@@ -65,3 +64,6 @@ def write_to_file(math_operations):
 
     for operation in math_operations:
         save_operation(operation, file_name, file_extension)
+
+def is_yes(answer):
+    return answer.strip().lower() in ("y", "ye", "yes")
