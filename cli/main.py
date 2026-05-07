@@ -1,10 +1,19 @@
 from calculator import Calculator
 from helpers import *
-from dispatcher import *
 
 def main():
     repeat = True
     calc = Calculator()
+    operation = {
+        '+': calc.add,
+        '-': calc.subtract,
+        '*': calc.multiply,
+        '/': calc.divide,
+        ':': calc.divide,
+        '%': calc.modulo,
+        '**': calc.exp
+    }
+
     print("Welcome to my Calculator")
     step = 0
     result = 0
