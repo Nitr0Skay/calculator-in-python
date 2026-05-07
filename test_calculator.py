@@ -17,6 +17,14 @@ def test_divide():
     calc = Calculator()
     assert calc.divide(10, 2) == 5
 
+def test_modulo():
+    calc = Calculator()
+    assert calc.modulo(10, 3) == 1
+
+def test_exp():
+    calc = Calculator()
+    assert calc.exp(2, 3) == 8
+
 def test_divide_by_zero():
     calc = Calculator()
 
