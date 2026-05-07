@@ -1,3 +1,4 @@
+from decimal import Decimal
 from calculator import Calculator
 from helpers import *
 from dispatcher import *
@@ -14,12 +15,12 @@ def main():
         step += 1
 
         if step == 1:
-            result = get_number("Enter your number: ")
+            result = Decimal(str(get_number("Enter your number: ")))
             op = get_operator("Pick your operator: ")
-            number = get_number("Enter next number: ")
+            number = Decimal(str(get_number("Enter next number: ")))
         else:
             op = get_operator("Pick your operator: ")
-            number = get_number("Enter next number: ")
+            number = Decimal(str(get_number("Enter next number: ")))
 
         old_result = result
         result = operation[op](result, number)
